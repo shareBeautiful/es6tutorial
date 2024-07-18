@@ -15,6 +15,7 @@ var ditto = {
     theme_button: true,
     save_progress: true, // 保存阅读进度
     search_bar: true,
+    wwads: true,
 
     // initialize function
     run: initialize
@@ -78,6 +79,10 @@ function init_sidebar_section() {
            init_searchbar();
         }
 
+        if (ditto.wwads) {
+          init_wwads();
+        }
+
         // 初始化内容数组
         var menuOL = $(ditto.sidebar_id + ' ol');
         menuOL.attr('start', 0);
@@ -125,7 +130,7 @@ function searchbar_listener(event) {
     if (q !== '') {
       var url = 'https://github.com/ruanyf/es6tutorial/search?utf8=✓&q=' + encodeURIComponent(q);
       window.open(url, '_blank');
-      win.focus();
+      window.focus();
     }
     return false;
   /*
@@ -137,6 +142,11 @@ function searchbar_listener(event) {
     }
   }
   */
+}
+
+function init_wwads() {
+  var wwads = '<div class="wwads-cn wwads-horizontal" data-id="197" style="max-width:100%;"></div>';
+  $(ditto.sidebar_id).find('h2').first().before($(wwads));
 }
 
 function init_theme_button() {
@@ -243,8 +253,8 @@ function li_create_linkage(li_tag, header_level) {
 }
 
 function create_banner(element) {
-  // 2020年12月1日
-  var deadline = new Date(2020, 11, 1);
+  // 2022年8月25日
+  var deadline = new Date(2022, 7, 25);
   if (deadline - (new Date()) < 0) return;
 
   var styleStr = [
@@ -258,11 +268,12 @@ function create_banner(element) {
     'color: #333333'
   ].join(';');
 
-  var text = '【免费课程】' +
-    '开始学习<span style="color: #4682BE;">《ES6 实战教程》</span>，一线大厂前端必备技能。';
+  var text = '【活动】' +
+    '<span style="color: #4682BE;">IT 廉价课程超市 ApeClass</span> 新上线，不必注册，直接试听前端、Python、JAVA、云计算等众多课程，满意再开通永久会员（所有课程仅需299.5元）。';
 
-  var banner = $('<a href="https://datayi.cn/w/a9BLv2LP" style="color: #333333;" target="_blank"><div style="' + styleStr + '">' + text + '</div></a>')
+  var banner = $('<a href="http://www.apeclass.com?did=12" style="color: #333333;" target="_blank"><div style="' + styleStr + '">' + text + '</div></a>')
     .insertAfter(element);
+  setTimeout(function () {if (banner.css('display') === 'none') {show_loading();show_error();} }, 500);
 }
 
 function create_page_anchors() {
@@ -356,7 +367,7 @@ function statistics() {
   s.parentNode.insertBefore(hm, s);
 }
 
-function router() { 
+function router() {
   var path = location.hash.replace(/#([^#]*)(#.*)?/, './$1');
 
   var hashArr = location.hash.split('#');

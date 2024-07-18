@@ -68,9 +68,9 @@ ES6 从开始制定到最后发布，整整用了 15 年。
 
 2015 年 6 月，ECMAScript 6 正式通过，成为国际标准。从 2000 年算起，这时已经过去了 15 年。
 
-目前，各大浏览器对 ES6 的支持可以查看[kangax.github.io/compat-table/es6/](https://kangax.github.io/compat-table/es6/)。
+目前，各大浏览器对 ES6 的支持可以查看[https://compat-table.github.io/compat-table/es6/](https://compat-table.github.io/compat-table/es6/)。
 
-Node.js 是 JavaScript 的服务器运行环境（runtime）。它对 ES6 的支持度更高。除了那些默认打开的功能，还有一些语法功能已经实现了，但是默认没有打开。使用下面的命令，可以查看 Node.js 默认没有打开的 ES6 实验性语法。
+Node.js 是 JavaScript 的服务器运行环境（runtime）。它对 ES6 的支持度更高。除了那些默认打开的功能，还有一些语法功能已经实现了，但是默认没有打开。使用下面的命令，可以查看 Node.js 默认没有打开的实验性语法。
 
 ```bash
 // Linux & Mac
@@ -242,7 +242,7 @@ import 'core-js';
 import 'regenerator-runtime/runtime';
 // 或者
 require('core-js');
-require('regenerator-runtime/runtime);
+require('regenerator-runtime/runtime');
 ```
 
 Babel 默认不转码的 API 非常多，详细清单可以查看`babel-plugin-transform-runtime`模块的[definitions.js](https://github.com/babel/babel/blob/master/packages/babel-plugin-transform-runtime/src/runtime-corejs3-definitions.js)文件。

@@ -114,7 +114,7 @@ const isNotModuleScript = this !== undefined;
 
 - CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
 - CommonJS 模块是运行时加载，ES6 模块是编译时输出接口。
-- CommonJS 模块的`require()`是同步加载模块，ES6 模块的`import`命令是异步加载，有一个独立模块依赖的解析阶段。
+- CommonJS 模块的`require()`是同步加载模块，ES6 模块的`import`命令是异步加载，有一个独立的模块依赖的解析阶段。
 
 第二个差异是因为 CommonJS 加载的是一个对象（即`module.exports`属性），该对象只有在脚本运行完才会生成。而 ES6 模块不是对象，它的对外接口只是一种静态定义，在代码静态解析阶段就会生成。
 
@@ -292,7 +292,7 @@ Node.js 要求 ES6 模块采用`.mjs`后缀文件名。也就是说，只要脚�
 }
 ```
 
-一旦设置了以后，该目录里面的 JS 脚本，就被解释用 ES6 模块。
+一旦设置了以后，该项目的 JS 脚本，就被解释成 ES6 模块。
 
 ```bash
 # 解释成 ES6 模块
@@ -397,7 +397,7 @@ import submodule from './node_modules/es-module-package/private-module.js';
 }
 ```
 
-由于`exports`字段只有支持 ES6 的 Node.js 才认识，所以可以用来兼容旧版本的 Node.js。
+由于`exports`字段只有支持 ES6 的 Node.js 才认识，所以可以搭配`main`字段，来兼容旧版本的 Node.js。
 
 ```javascript
 {
@@ -412,7 +412,7 @@ import submodule from './node_modules/es-module-package/private-module.js';
 
 **（3）条件加载**
 
-利用`.`这个别名，可以为 ES6 模块和 CommonJS 指定不同的入口。目前，这个功能需要在 Node.js 运行的时候，打开`--experimental-conditional-exports`标志。
+利用`.`这个别名，可以为 ES6 模块和 CommonJS 指定不同的入口。
 
 ```javascript
 {
@@ -432,14 +432,14 @@ import submodule from './node_modules/es-module-package/private-module.js';
 
 ```javascript
 {
-  "exports": {package.json 的
+  "exports": {
     "require": "./main.cjs",
     "default": "./main.js"
   }
 }
 ```
 
-注意，如果同时还有其他别名，就不能采用简写，否则或报错。
+注意，如果同时还有其他别名，就不能采用简写，否则会报错。
 
 ```javascript
 {
